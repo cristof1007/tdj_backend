@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PUERTO_EXPRESS || 3300;
 
 
 // configurando CORS
@@ -21,6 +22,6 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.listen(3000);
+app.listen(PORT);
 
-console.log('Servidor corriendo en el puerto 3000');
+console.log('Servidor corriendo en el puerto '+PORT);
