@@ -1,10 +1,9 @@
 const express = require('express');
-const morgan = require("morgan")
+const morgan = require("morgan");
 
-dotenv.config();
 
 const app = express();
-const PORT = process.env.EXPRESS_PORT || 3300;
+const PORT = 3300;
 
 
 // configurando CORS
