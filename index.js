@@ -1,9 +1,10 @@
 const express = require('express');
 const morgan = require("morgan");
-
+const bodyParser = require('body-parser');
+require('dotenv').config();
 
 const app = express();
-const PORT = 3300;
+const PORT = process.env.EXPRESS_PORT || 3300;
 
 
 // configurando CORS
@@ -21,5 +22,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.listen(PORT);
-
 console.log('Servidor corriendo en el puerto '+PORT);
+
+//routers
+var authRouter = require('./src/routers/auth');
+authRouter(app);
