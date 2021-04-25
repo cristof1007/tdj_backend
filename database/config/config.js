@@ -4,23 +4,26 @@ module.exports =
 {
   "development": {
     "username": "sa",
-    "password": '5433',
-    "database": "database_development",
+    "password": '1234',
+    "database": "juris_dev",
     "host": "127.0.0.1",
-    "dialect": "juris_dev"
+    "dialect": "postgres",
+    "port": '5433'
   },
   "test": {
     "username": "root",
-    "password": '5433',
+    "password": '1234',
     "database": "juris_test",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": '5433'
   },
   "production": {
     "username": "root",
-    "password": '5433',
+    "password": '1234',
     "database": "juris",
     "host": "127.0.0.1",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "port": '5433'
   }
 }
