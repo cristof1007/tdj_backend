@@ -1,6 +1,5 @@
 const express = require('express');
 const morgan = require("morgan");
-const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
@@ -25,5 +24,5 @@ app.listen(PORT);
 console.log('Servidor corriendo en el puerto '+PORT);
 
 //routers
-var authRouter = require('./src/routers/auth');
+var authRouter = require('./src/routers/auth.router');
 authRouter(app);

@@ -17,19 +17,22 @@ const key = process.env.TOKEN || 'token_default';
 module.exports = {
     
     login: async(req, res) => { 
-
         body = req.body;
+
+        // verify if body has correct format
         let verify = cheker.verifyBody(body, ['usuario', 'password']);
         if(!verify) {
             return res.status(412).json('ERROR: El formato recibido no coincide con los parametros validos')
         }
         
+        // validations
         let messageError = cheker.required(bodi.user, 3);
         messageError += cheker.require(body.password, 4);
         if(messageError != ''){
             return res.status(412).json(`ERROR: no se cumple con los requisitos de body con errores en:\n${messageError}`)
         }
 
+        // review if user exist
         const user = users.find(u => { return u.user === body.user && u.password === body.password });
         if (user) {
             let data = { usuario: user.user,  rol: user.role }
