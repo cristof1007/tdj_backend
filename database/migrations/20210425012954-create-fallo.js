@@ -9,16 +9,32 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       idTipoFallo: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categorias',
+          key: 'id'
+        }
       },
       idProceso: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Procesos',
+          key: 'id'
+        }
       },
       idTitulo: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Categorias',
+          key: 'id'
+        }
       },
       idFormaResolucion: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references:{
+          model: 'Categorias',
+          key: 'id'
+        }
       },
       numeroFallo: {
         type: Sequelize.STRING

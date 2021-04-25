@@ -5,7 +5,7 @@ module.exports =
   "development": {
     "username": "sa",
     "password": '1234',
-    "database": "juris_dev",
+    "database": "juris_dev1",
     "host": "127.0.0.1",
     "dialect": "postgres",
     "port": '5433'
