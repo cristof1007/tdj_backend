@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const cheker = require('../libs/validator')
-
+const fetch = require('node-fetch');
 const users = [
     {
         user: 'john',
@@ -17,7 +17,32 @@ const key = process.env.TOKEN || 'token_default';
 module.exports = {
     
     login: async(req, res) => { 
-        body = req.body;
+        body = JSON.stringify(req.body),
+        console.log('BODY:', body);
+        console.log('RES BODY:', req.body);
+
+        // request("http://zeus.pj-scr.poderjudicial.gov.bo/api/login/autenticar", function(error, response, body) {
+        //     if (!error && response.statusCode == 200) {
+        //         // writing the response to a file named data.html
+        //         // fs.writeFileSync("data.html", body);
+        //     }
+        // });
+
+        fetch('http://zeus.pj-scr.poderjudicial.gov.bo/api/login/cambiarclave', {
+            method:'POST',
+            body: body,
+            headers: { 'Content-Type': 'application/json' }
+        })
+        .then(res => {
+            res.json()
+            console.log(res);
+        })
+        .then(json => {
+            console.log('JSON:', json)
+        });
+
+        return;
+
 
         // verify if body has correct format
         let verify = cheker.verifyBody(body, ['usuario', 'password']);
