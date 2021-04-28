@@ -7,6 +7,7 @@ module.exports = {
         let errors = validationResult(req).array();
         if(errors) 
             return res.status(406).json(errors)
+
         return res.json(req.body);
     },
 
@@ -20,4 +21,5 @@ module.exports = {
     dell: (req, res) => {
         return res.json(req.body);
     }
+    
 }

@@ -1,11 +1,13 @@
 
 const { check } = require('express-validator');
 const forma = require('../services/formaResolucion.service');
+const {validarToken} = require('../libs/auth.guard')
 const prefijo = (process.env.PREFIJO || 'api') + '/forma_resolucion';
 
 
 module.exports=(app) =>{
-    app.post(`/${prefijo}`, [
+    app.post(`/${prefijo}`,[validarToken],
+    [
         check('descripcion').notEmpty()
         .withMessage('Debe de especificar la descipcion de la forma de resolucion')
         .isLength({min:3})
