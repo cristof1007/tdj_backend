@@ -15,7 +15,6 @@ app.use(function (req, res, next) {
     next();
 });
 
-// middlewares
 // Morgan modulo para hacer seguimiento a los EndPoints en modo dev
 app.use(morgan('dev'));
 app.use(express.json());
@@ -25,7 +24,15 @@ app.listen(PORT);
 console.log('Servidor corriendo en el puerto '+PORT);
 
 //routers
-var authRouter = require('./src/routers/auth.router');
+var authRouter = require('./src/routes/auth.route');
 authRouter(app);
-var formaResolucion = require('./src/routers/formaResolucion.router');
+var fallo = require('./src/routes/fallo.route');
+fallo(app);
+var formaResolucion = require('./src/routes/formaResolucion.route');
 formaResolucion(app);
+var materia = require('./src/routes/materia.route');
+materia(app);
+var tipoFallo = require('./src/routes/tipoFallo.route');
+tipoFallo(app);
+var titulo = require('./src/routes/titulo.route');
+titulo(app);
