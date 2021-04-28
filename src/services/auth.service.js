@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const cheker = require('../libs/validator')
 const fetch = require('node-fetch');
 const users = [
     {

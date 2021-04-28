@@ -6,7 +6,7 @@ const prefijo = (process.env.PREFIJO || 'api') + '/forma_resolucion';
 
 
 module.exports=(app) =>{
-    app.post(`/${prefijo}`,[validarToken],
+    app.post(`/${prefijo}`, [validarToken],
     [
         check('descripcion').notEmpty()
         .withMessage('Debe de especificar la descipcion de la forma de resolucion')
@@ -16,7 +16,8 @@ module.exports=(app) =>{
         return forma.create(req, res);
     })
 
-    app.put(`/${prefijo}`, [
+    app.put(`/${prefijo}`, [validarToken],
+    [
         check('descripcion').notEmpty()
         .withMessage('Debe de especificar la descipcion de la forma de resolucion')
         .isLength({min:3})
@@ -25,8 +26,9 @@ module.exports=(app) =>{
         return forma.update(req, res);
     })
 
-    app.delete(`/${prefijo}`, [
-        check('idTipoResolucion').isNumeric({min:1})
+    app.delete(`/${prefijo}`, [validarToken],
+    [
+        check('idFormaResolucion').isNumeric({min:1})
         .withMessage('Debe de especificarse como numero')
         .custom(value => {
             if(value < 1) {

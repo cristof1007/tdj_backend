@@ -2,15 +2,21 @@
 const { check } = require('express-validator');
 const forma = require('../services/formaResolucion.service');
 const {validarToken} = require('../libs/auth.guard')
-
-const prefijo = (process.env.PREFIJO || 'api') + '/tipo_fallo';
+const prefijo = (process.env.PREFIJO || 'api') + '/proceso';
 
 
 module.exports=(app) =>{
     app.post(`/${prefijo}`, [validarToken],
     [
+        check('idMateria').isNumeric({min:1})
+        .withMessage('Debe de especificarse una materia')
+        .custom(value => {
+            if(value < 1) {
+                return Promise.reject('Id invalido')
+            }
+        }),
         check('descripcion').notEmpty()
-        .withMessage('Debe de especificar la descipcion de la forma de resolucion')
+        .withMessage('Debe de especificar la descipcion de la materia')
         .isLength({min:3})
         .withMessage('Debe de tener al menos 3 caracteres')
     ], (req, res) => {
@@ -19,8 +25,15 @@ module.exports=(app) =>{
 
     app.put(`/${prefijo}`, [validarToken],
     [
+        check('idMateria').isNumeric({min:1})
+        .withMessage('Debe de especificarse una materia')
+        .custom(value => {
+            if(value < 1) {
+                return Promise.reject('Id invalido')
+            }
+        }),
         check('descripcion').notEmpty()
-        .withMessage('Debe de especificar la descipcion de la forma de resolucion')
+        .withMessage('Debe de especificar la descipcion de la materia')
         .isLength({min:3})
         .withMessage('Debe de tener al menos 3 caracteres')
     ], (req, res) => {
@@ -29,7 +42,7 @@ module.exports=(app) =>{
 
     app.delete(`/${prefijo}`, [validarToken],
     [
-        check('idTipoResolucion').isNumeric({min:1})
+        check('idMateria').isNumeric({min:1})
         .withMessage('Debe de especificarse como numero')
         .custom(value => {
             if(value < 1) {
