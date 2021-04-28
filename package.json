@@ -1,14 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "backend registro de fallos",
   "main": "index.js",
   "scripts": {
     "start": "concurrently clear \"nodemon index.js\" ",
     "test": "jest",
-    "pull": "git --version"
+    "pull": "concurrently \"git pull\" \"npm install\""
   },
-  "author": "",
+  "author": "DAF",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -31,6 +31,10 @@
     "nodemon": "^2.0.7",
     "sequelize-auto": "^0.8.2",
     "supertest": "^6.1.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cristof1007/tdj_backend.git"
   },
   "jest": {
     "testEnvironment": "node",
